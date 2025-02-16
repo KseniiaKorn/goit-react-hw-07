@@ -1,0 +1,28 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    border: 1px solid rgb(162, 160, 160);
+    border-radius: 8px;
+    box-shadow: 2px 2px 2px 2px rgb(180, 179, 179);
+    margin-top: 20px;
+    max-width: 300px;
+}
+
+.label {
+    display: flex;
+    gap: 10px;
+    font-size: 16px;
+}
+
+.field {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid rgb(162, 160, 160);
+    box-shadow: 2px 2px 2px 2px rgb(180, 179, 179);
+    font-size: 15px;
+    outline: none;
+    box-sizing: border-box;
+    width: 100%;
+}
