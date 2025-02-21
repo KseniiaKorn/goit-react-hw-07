@@ -2,22 +2,28 @@ import React from 'react';
 import Contact from '../Contact/Contact';
 import s from './ContactList.module.css'
 import { useSelector } from 'react-redux';
-import { selectContacts } from '../../redux/contactsSlice';
-import { selectNameFilter } from '../../redux/filtersSlice';
+import { selectContacts, selectFilteredContacts } from '../../redux/contactsSlice';
 
 
 const ContactList = () => {
     const contacts = useSelector(selectContacts);
-    const filter = useSelector(selectNameFilter);
-    const filteredContacts = contacts.filter((contact) =>
-        contact.name.toLowerCase().trim().includes(filter.toLowerCase().trim())
-    );
+    const filteredContacts = useSelector(selectFilteredContacts);
+
+    if (filteredContacts.length === 0) {
+        return (
+            <p className={s.noContactsMessage}>
+                {contacts.length === 0
+                    ? "There are no contacts in a phonebook"
+                    : "There are no contacts matching your query"}
+            </p>
+        );
+    }
     
     return (
         <div >
             <ul className={s.contactList}>
                 {filteredContacts.map((contact) => (
-                    <li key={contact.id}>
+                    <li className={s.contactItem} key={contact.id}>
                         <Contact contact={contact} />
                     </li>
                 ))}
